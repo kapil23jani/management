@@ -1,0 +1,59 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 sm-offset-6" >
+      <div class="professor_form">
+        <%= form_for ([current_user, @professor]) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+
+          <div class="field"><br>
+            <%= f.label :school_id %>
+            <%= f.collection_select :school_id, School.all,:id,:name, {}, class: "form-control" %>
+            
+          </div>
+
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :subject %>
+            <%= f.text_field :subject, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :dob %>
+            <%= f.date_field :dob, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :address %>
+            <%= f.text_field :address, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :mobile_no %>
+            <%= f.text_field :mobile_no, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :experience %>
+            <%= f.text_field :experience, class: "form-control" %>
+          </div><br>
+
+          <div class="actions">
+            <%= f.submit "Update", class: "btn btn-success" %>
+            <%= link_to "Back", user_professors_path(current_user), class: "btn btn-warning" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

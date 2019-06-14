@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  section: MyString
+  strength: 1
+  user: one
+  school: one
+
+two:
+  name: MyString
+  section: MyString
+  strength: 1
+  user: two
+  school: two

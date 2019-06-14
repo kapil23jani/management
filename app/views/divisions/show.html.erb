@@ -1,0 +1,58 @@
+<div class="container"><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <h4>Students Of Class</h4>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+        <% @students.each do |student| %>
+        <tr>
+          <td><%= student.name%></td>
+          <td><%= student.email%></td>
+        </tr>
+        <%end%>
+      </table>
+    </div>
+  </div>   
+  <div class="row">
+    <div class="col-sm-4">
+      <h4>Assigned Professor</h4><br>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Subject</th>
+          <th>Actions</th>
+        </tr>
+        <tbody class="teacher">
+          <%= render partial: "data"%>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <h4>Available Professors</h4><br>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Experience</th>
+          <th>School</th>
+          <th>Subject</th>
+          <th>Assign </th>
+
+        </tr>
+        <% @professors.each do |professor| %>
+        <tr>
+          <td><%= professor.name%></td>
+          <td><%= professor.email%></td>
+          <td><%= professor.experience%></td>
+          <td><%= professor.school.name %></td>
+          <td><%= professor.subject %></td>
+          <td><%= link_to "Assign Teacher", teacher_assign_path(division_id: @division, professor_id: professor), remote: true, class: "btn btn-info" %></td>
+        </tr>
+        <%end%>
+      </table>
+    </div>
+  </div>
+</div>

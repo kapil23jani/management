@@ -1,0 +1,9 @@
+<% @students.each do |student| %>
+  <tr>
+    <td><%= student.name%></td>
+    <td><%= student.school.name%></td>
+    <td><%= student.division.name %></td>
+    <td><%= student.email %></td>
+    <td><%= link_to "Edit", edit_user_student_path(current_user, student), class: "btn btn-info" %>  <%= link_to "Delete", user_student_path(current_user, student), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger" %></td>
+  </tr>
+<%end%>

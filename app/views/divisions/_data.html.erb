@@ -1,0 +1,7 @@
+<% @alloted_professors.each do |assigned_prof| %>
+  <tr>
+    <td><%= assigned_prof.name%></td>
+    <td><%= assigned_prof.subject%></td>
+    <td><%= link_to "Remove", remove_teacher_path(school_id: params[:school_id], division_id: params[:id], professor_id: assigned_prof), remote: true%></td>
+  </tr>
+<%end%>

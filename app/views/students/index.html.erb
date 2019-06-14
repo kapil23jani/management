@@ -1,0 +1,43 @@
+<div class="container"><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="searching"> 
+        <%=form_tag searching_student_path, method: 'get', remote: true do %>
+          <p>
+            <%= text_field_tag :search, params[:search],  placeholder: "Search", class: "form-control" %><br>
+            <%= submit_tag "Search", class: "btn btn-warning"%>
+            <%= submit_tag("Reset", { type: "reset", class: "btn btn-danger" }) %>
+          </p>
+        <% end %>
+      </div><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= link_to "New Student", new_user_student_path(current_user), class: "btn btn-info" %><br><br>
+      <%= form_tag import_user_students_path(current_user), multipart: true do %>
+          <%= file_field_tag :file, class: "form-control" %><br>
+          <%= submit_tag "Import Csv" , class: "btn btn-secondary" %>
+      <%end%>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-sm-8">
+      <table class="table table-bordered table-striped">
+        <tr>
+            <th>Name</th>
+            <th>School Name</th>
+            <th>Class Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        <tbody class="records">
+            <%= render partial: "searching_student"%>
+        </tbody>
+      </table>
+      <div class="paginate">
+        <%= will_paginate @students, container: false %>
+      </div>
+    </div>
+  </div>
+</div>

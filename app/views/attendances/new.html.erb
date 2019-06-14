@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <%= form_for ([current_user, @school, @division, @attendance]) do |form| %>
+        <%= form.label :name %>
+        <%= form.date_field :date, class: "form-control" %>
+        <%= form.hidden_field :division_id, value: params[:division_id] %>
+        <%= form.hidden_field :user_id, value: current_user.id %>
+
+          <div class="collection-check-box">
+            <table class="table">
+              <tr>
+                <th>Student Name</th>
+                <th>Present</th>
+              <%@division.students.each do |student| %>
+              <tr>
+                <td><%= student.name %></td>
+                <td><%= check_box_tag "attendances[#{student.id}][present]", class: "form-control000000" %></td>
+              </tr>
+              <% end %>
+            </table><br>
+          </div>
+        <%= form.submit class: "btn btn-success" %>
+    <%end%>
+    </div>
+  </div>
+</div>

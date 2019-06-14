@@ -1,0 +1,21 @@
+<div class="container">
+	<br>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class= "stats">
+				<%= pie_chart Student.joins(:division, :school).group("schools.name").count%>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<% @schools.each do |school| %>
+		<div class="col-sm-4"><br>
+			<div class="card" style="width: 18rem;">
+			  <div class="card-body">
+			    <p class="card-text"><%= link_to school.name, school_divisions_path(school_id: school)%></p>
+			  </div>
+			</div>
+		</div>
+		<%end%>
+	</div>
+</div>

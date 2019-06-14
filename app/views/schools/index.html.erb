@@ -1,0 +1,26 @@
+<br>
+&nbsp;&nbsp;&nbsp;<%= link_to "New School", new_user_school_path(current_user), class: "btn btn-secondary" %>
+<br><br>
+<div class="row">
+    &nbsp;&nbsp;&nbsp;&nbsp;<div class="col-sm-6 offset-sm-3">
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Contact No</th>
+          <th>Actions</th>
+        </tr>
+        <% @schools.each do |school| %>
+        <tr>
+          <td><%=link_to school.name, user_school_path(current_user, school), class: "link" %></td>
+          <td><%= school.contact_no %></td>
+          <td><%= link_to "Edit", edit_user_school_path(current_user, school), class: "btn btn-info" %>  <%= link_to "Delete", user_school_path(current_user, school), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger" %></td>
+        </tr>
+        <%end%>
+      </table>
+      <div class="digg_pagination">
+        <div class="page_info">
+        </div>
+        <%= will_paginate @schools, container: false %>
+      </div>
+    </div>
+</div>

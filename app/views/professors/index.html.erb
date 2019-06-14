@@ -1,0 +1,28 @@
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to "New Professor", new_professor_registration_path, class: "btn btn-primary" %><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 sm-offset-4">
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Experience</th>
+          <th>School</th>
+          <th>Actions</th>
+
+        </tr>
+        <% @professors.each do |professor| %>
+        <tr>
+          <td><%= professor.name%></td>
+          <td><%= professor.email%></td>
+          <td><%= professor.experience%></td>
+          <td><%= professor.school.name %></td>
+          <td><%= link_to "Edit", edit_user_professor_path(current_user, professor), class: "btn btn-info"%>  <%= link_to "Delete", user_professor_path(current_user, professor) ,method: :delete, data: {confirm: "Are you Sure"}, class: "btn btn-danger" %></td>
+        </tr>
+        <%end%>
+      </table>
+    </div>
+  </div>
+</div>

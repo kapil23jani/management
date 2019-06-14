@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="student_form">
+        <%= form_for ([current_user, @student]), html: {class: "student"} do |f| %> 
+     
+          <div class="field">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :father_name %>
+            <%= f.text_field :father_name, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :mother_name %>
+            <%= f.text_field :mother_name, class: "form-control" %>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :gender %>
+            <%= f.radio_button :gender, "male" %> Male
+            <%= f.radio_button :gender, "female" %>Female
+          </div>
+
+          <div class="field">
+            <%= f.label :dob %>
+            <%= f.date_field :dob, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :contact_no %>
+            <%= f.text_field :contact_no, class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div><br>
+
+          <div class="field">
+            <%= f.label :division %>
+            <%= f.grouped_collection_select :division_id, current_user.schools.order(:name), :divisions, :name, :id, :name,{} ,{class: "form-control"} %><br>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :picture %><br />
+            <%= f.file_field :picture, class: "form-control" %>
+          </div><br>
+          <%= f.submit class: "btn btn-success" %> 
+        <%end%>
+
+        <script type="text/javascript">
+          <%= render "validate.js" %>
+        </script>
+      </div>
+    </div>
+  </div>
+</div>

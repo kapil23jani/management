@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="attendance">
+        <% @attendance.each do |attendance| %>
+        <%end%>  
+      </div>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="com-sm-4">
+      <%= link_to "New Attendance", new_user_school_division_attendance_path(current_user, school_id: params[:school_id], division_id: params[:division_id]) %>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="attendance_record">
+        <table class="table">
+          <tr>
+            <th>Date</th>
+            <th>Name of Class</th>
+            <th>Total Student</th>
+            <th>Present Student</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+          <% @attendances.each do |attendance| %>
+          <tr>
+            <td><%= link_to attendance.date, user_school_division_attendance_path(current_user, @division.school, @division, attendance)%></td>
+            <td><%= attendance.division.name%></td>
+            <td><%= @division.students.count%></td>
+            <td><%= attendance.students.count%></td>
+            <td><%= link_to "Edit", edit_user_school_division_attendance_path(current_user, @division.school, @division, attendance), class: "btn btn-info"%></td>
+            <td><%= link_to "Delete", user_school_division_attendance_path(current_user, @division.school, @division, attendance), method: :delete, data: {confirm: "Are you sure"}, class: "btn btn-danger"%></td>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

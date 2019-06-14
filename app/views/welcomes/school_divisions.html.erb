@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+  <% @divisions.each do |division|%>
+    <div class="col-sm-4"><br>
+      <div class="divisions">
+        <div class="card w-50">
+          <div class="card-body">
+            <h5 class="card-title"><h3>Class</h3><%= link_to division.name, division_attendance_path(school_id: division.school_id,division_id: division) %></h5>
+            <p class="card-text"> Seats: <%= division.strength %></p>
+            <p class="card-text">Strength <%= division.students.count %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div class="container">
+  <div class="row">
+    <% @school.each do |school| %>
+    <div class="col-sm-4"><br>
+       <div class="panel panel-success">
+	      <div class="panel-heading"><center>School Name</center></div>
+	      <div class="panel-body"><center><h4><%= link_to school.name, school_division_path(school), class: "nav-link"%></h4></center></div>
+	    </div>
+    </div>
+    <%end%>
+  </div>
+</div>

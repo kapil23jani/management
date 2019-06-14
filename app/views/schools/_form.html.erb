@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row"> 
+    <div class="col-sm-4">
+    <%= form_for ([current_user, @school]), html: {class: "school"} do |form| %>
+        <% if @school.errors.any? %>
+            <div class="explanation">
+                <% @school.errors.full_messages.each do |msg| %>
+                    <%= msg %>
+                <%end%>
+            </div>
+        <%end%>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %><br>
+        <%= form.label :email %>
+        <%= form.text_field :email, class: "form-control" %><br>
+        <%= form.label :contact_no %>
+        <%= form.text_field :contact_no, class: "form-control" %><br>
+        <%= form.label :street %>
+        <%= form.text_field :street, class: "form-control" %><br>
+        <%= form.label :landmark %>
+        <%= form.text_field :landmark, class: "form-control" %><br>
+        <%= form.label :city %>
+        <%= form.text_field :city, class: "form-control" %><br>
+        <%= form.label :state %>
+        <%= form.text_field :state, class: "form-control" %><br>
+        <%= form.label :country %>
+        <%= form.text_field :country, class: "form-control" %><br>
+        <%= form.label :zipcode %>
+        <%= form.text_field :zipcode, class: "form-control" %><br>
+        <%= form.submit class: "btn btn-success"%>
+        <%= link_to "Back", user_schools_path(current_user), class: "btn btn-warning" %>
+    <%end%>
+    <script type="text/javascript">
+        <%= render "validate.js" %>
+    </script>
+    </div>
+  </div>
+</div>

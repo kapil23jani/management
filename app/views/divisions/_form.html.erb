@@ -1,0 +1,11 @@
+<%= form_for ([current_user, @school, @division]) do |form| %>
+	<%= form.label :name %>
+	<%= form.text_field :name %>
+	<%= form.label :section %>
+	<%= form.text_field :section %>
+	<%= form.label :strength %>
+	<%= form.text_field :strength %>
+	<%= form.hidden_field :school_id, value: params[:school_id] %>
+	<%= form.hidden_field :user_id, value: params[:user_id] %>
+	<%= form.submit %>
+<%end%>

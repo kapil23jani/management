@@ -1,0 +1,45 @@
+&nbsp;&nbsp;&nbsp;<%= link_to "Back", user_schools_path(current_user), class: "btn btn-warning" %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 "><br>
+      <div class="panel panel-success">
+        <div class="panel-heading"><center><h4><%= @school.name %></h4><h5>Email      : <%= @school.email %><br></h5></center></div>
+        <div class="panel-body">
+          <p>Street     : <%= @school.street %><br></p>
+          <p>Landmark   : <%= @school.landmark %><br></p>
+          <p>City       : <%= @school.city %><br></p>
+          <p>State      : <%= @school.state %><br></p>
+          <p>Country    : <%= @school.country %><br></p>
+          <p>Zipcode    :  <%= @school.zipcode %><br></p>
+          <p align="right"><%= link_to "Edit", edit_user_school_path(current_user, @school), class: "btn btn-primary" %></p>
+        </div>
+      </div>
+    </div>
+    <div class = "col-sm-8 offset-sm-6" >
+      
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <% @divisions.each do |division| %>
+    <div class="col-sm-4">
+      <div class="panel panel-success class">
+        <div class="panel-heading"><h4>Class : <%= link_to division.name , user_school_division_path(current_user, @school, division)%> </h4>
+          <div class="panel-body">
+            <h5>Total Strength : <%= division.strength%></h5>
+            <%= link_to "Edit", edit_user_school_division_path(current_user, @school, division), class: "btn btn-secondary" %> <%= link_to "Delete", user_school_division_path(current_user, @school, division), method: :delete, data: {confrim: "Are you sure"}, class: "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%end%>
+    <div class="col-sm-4">
+      <div class="school_class">
+        <%= link_to "Add Class", new_user_school_division_path(current_user, @school), class: "btn btn-secondary"%>
+      </div>
+    </div>
+  </div>
+</div>
